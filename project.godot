@@ -1,0 +1,45 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "Bullet",
+"language": "GDScript",
+"path": "res://Bullet.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Enemies",
+"language": "GDScript",
+"path": "res://Enemies.gd"
+} ]
+_global_script_class_icons={
+"Bullet": "",
+"Enemies": ""
+}
+
+[application]
+
+config/name="SpaceShooter-Gemo"
+run/main_scene="res://Main.tscn"
+config/icon="res://icon.png"
+
+[display]
+
+window/size/width=400
+
+[layer_names]
+
+2d_render/layer_1="Player"
+2d_render/layer_2="Bullet"
+2d_render/layer_3="Enemies"
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"
