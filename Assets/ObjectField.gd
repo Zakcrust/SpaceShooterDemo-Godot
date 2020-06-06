@@ -8,6 +8,5 @@ func on_bullet_hit(score):
 
 func _on_Player_shoot(player_position, bullet):
 	var new_bullet = bullet.instance()
-	new_bullet.position = player_position + Vector2(0, -10)
-	new_bullet.connect("hit", self, "on_bullet_hit")
+	new_bullet.position = player_position
 	add_child(new_bullet)

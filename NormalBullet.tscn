@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 2.4127, 9.56596 )
 
-[node name="NormalBullet" type="KinematicBody2D"]
+[node name="NormalBullet" type="Area2D"]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource( 1 )
@@ -15,5 +15,5 @@ script = ExtResource( 1 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="BulletCollider" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

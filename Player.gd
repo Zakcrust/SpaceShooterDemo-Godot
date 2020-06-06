@@ -26,7 +26,7 @@ func _process(delta):
 		states.move:
 			_move(delta)
 		states.hit:
-			pass
+			_move(delta)
 		states.dead:
 			pass
 			
@@ -47,9 +47,11 @@ func _move(delta):
 	collide = move_and_collide(velocity * MOVE_SPEED * delta)
 
 
-func check_collided_object() -> void:
+func check_collided_object(collide) -> void:
 	if collide != null:
-		if collide is KinematicBody2D:
+#		print(collide)
+		if collide is Enemies:
+			collide.queue_free()
 			if lives > 0:
 				lives -= 1
 				emit_signal("player_hit", lives)
@@ -63,9 +65,14 @@ func check_collided_object() -> void:
 
 func shoot() -> void:
 	can_shoot = false
-	emit_signal("shoot",position ,bullet)
+	var bullet_position = position
+	bullet_position.y -= $Sprite.texture.get_height() / 2
+	emit_signal("shoot",bullet_position ,bullet)
 	$BulletReload.start()
-
 
 func _on_BulletReload_timeout():
 	can_shoot = true
+
+
+func _on_HitBox_area_entered(area):
+	check_collided_object(area)
