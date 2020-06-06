@@ -1,6 +1,6 @@
 extends Node2D
 
-var enemy : PackedScene = preload("res://Enemy.tscn")
+var enemy : PackedScene = preload("res://Scenes/Enemy.tscn")
 
 var MAX_WIDTH : int = 400
 var rng : RandomNumberGenerator

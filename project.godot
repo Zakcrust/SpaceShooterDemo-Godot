@@ -12,12 +12,12 @@ _global_script_classes=[ {
 "base": "Area2D",
 "class": "Bullet",
 "language": "GDScript",
-"path": "res://Bullet.gd"
+"path": "res://Scripts/Bullet.gd"
 }, {
 "base": "Area2D",
 "class": "Enemies",
 "language": "GDScript",
-"path": "res://Enemies.gd"
+"path": "res://Scripts/Enemies.gd"
 } ]
 _global_script_class_icons={
 "Bullet": "",
@@ -27,12 +27,12 @@ _global_script_class_icons={
 [application]
 
 config/name="SpaceShooter-Gemo"
-run/main_scene="res://Main.tscn"
+run/main_scene="res://Scenes/Main.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
-DataManager="*res://DataManager.gd"
+DataManager="*res://Scripts/DataManager.gd"
 
 [display]
 
