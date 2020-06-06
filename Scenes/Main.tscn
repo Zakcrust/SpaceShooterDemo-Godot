@@ -7,10 +7,6 @@
 [ext_resource path="res://Scenes/UI/GameOver.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/UI/UI.tscn" type="PackedScene" id=6]
 
-
-
-
-
 [node name="Main" type="Node2D"]
 
 [node name="BulletField" parent="." instance=ExtResource( 3 )]
@@ -56,4 +52,5 @@ visible = false
 [node name="UI" parent="CanvasUI" instance=ExtResource( 6 )]
 [connection signal="update_score_label" from="EnemySpawner" to="CanvasUI/UI" method="_on_EnemySpawner_update_score_label"]
 [connection signal="game_over" from="Player" to="CanvasUI/GameOver" method="_on_Player_game_over"]
+[connection signal="player_hit" from="Player" to="CanvasUI/UI" method="_on_Player_player_hit"]
 [connection signal="shoot" from="Player" to="BulletField" method="_on_Player_shoot"]

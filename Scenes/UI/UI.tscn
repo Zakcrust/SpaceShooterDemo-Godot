@@ -1,26 +1,43 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Arial_Rounded_MT.ttf" type="DynamicFontData" id=1]
 
-[sub_resource type="GDScript" id=2]
+[sub_resource type="GDScript" id=1]
 script/source = "extends Control
 
 func set_score_label(score : int) -> void:
 	$Score.text = str(score)
 
+func set_lives_label(lives : int) -> void:
+	$Lives.text = \"Lives : %s\" % str(lives)
 
 func _on_EnemySpawner_update_score_label(score):
 	set_score_label(score)
+
+func _ready():
+	set_score_label(DataManager.get_score())
+	set_lives_label(DataManager.get_lives())
+
+
+func _on_Player_player_hit(current_lives):
+	set_lives_label(current_lives)
 "
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 size = 36
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+use_mipmaps = true
+use_filter = true
 font_data = ExtResource( 1 )
 
 [node name="UI" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = SubResource( 2 )
+script = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -29,10 +46,19 @@ __meta__ = {
 margin_top = 69.0
 margin_right = 400.0
 margin_bottom = 112.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "0"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Lives" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 3 )
+text = "Lives : 0"
 __meta__ = {
 "_edit_use_anchors_": false
 }

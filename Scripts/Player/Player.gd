@@ -3,7 +3,7 @@ extends KinematicBody2D
 #### Player Properties
 var state
 var velocity : Vector2 = Vector2()
-var lives : int = 3
+var lives : int = DataManager.get_lives()
 export (int) var MOVE_SPEED = 200 # 200 pixel / sec
 var collide
 signal player_hit(current_lives)
@@ -52,9 +52,9 @@ func check_collided_object(collide) -> void:
 #		print(collide)
 		if collide is Enemies:
 			collide.queue_free()
+			lives -= 1
+			emit_signal("player_hit", lives)
 			if lives > 0:
-				lives -= 1
-				emit_signal("player_hit", lives)
 				state = states.hit
 				$Sprite/AnimationPlayer.play("on_hit")
 				yield($Sprite/AnimationPlayer, "animation_finished")
