@@ -9,7 +9,7 @@ var collide
 signal player_hit(current_lives)
 signal shoot(player_position, bullet)
 signal game_over()
-var bullet = preload("res://Scenes/NormalBullet.tscn")
+var bullet = preload("res://Scenes/Bullet/NormalBullet.tscn")
 var can_shoot = true
 ###################################################
 #### Player States

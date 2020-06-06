@@ -14,3 +14,11 @@ func get_damage() -> int:
 func _init(default_damage = 0, default_velocity = Vector2()):
 	damage = default_damage
 	velocity = default_velocity
+
+func _process(delta):
+	position += velocity * delta
+	if global_position.y < (0 - get_texture_height()):
+		queue_free()
+		
+func get_texture_height():
+	return $Sprite.texture.get_height()
